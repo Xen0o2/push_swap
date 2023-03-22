@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:43:59 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/03/18 10:59:00 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:18:04 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 #include "push_swap.h"
 
-int	ft_atoi(char *s)
+long long ft_atoi(char *s)
 {
 	int	result;
 	int	sign;

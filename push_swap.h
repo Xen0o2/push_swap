@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 02:24:34 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/03/18 10:58:13 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:18:17 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_stack	*new_stack(int value);
 t_stack	*get_bottom_stack(t_stack *stack);
 void    add_bottom_stack(t_stack **stack, t_stack *new);
 
-int	ft_atoi(char *s);
+long long int	ft_atoi(char *s);
 
 
 #endif
