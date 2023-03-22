@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 02:24:34 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/03/17 02:52:56 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/03/18 10:58:13 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <limits.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 /* PAS BESOIN */
 
@@ -29,6 +30,8 @@ typedef struct s_stack
 t_stack	*new_stack(int value);
 t_stack	*get_bottom_stack(t_stack *stack);
 void    add_bottom_stack(t_stack **stack, t_stack *new);
+
+int	ft_atoi(char *s);
 
 
 #endif
