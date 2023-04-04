@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 02:25:00 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/03/22 16:58:41 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:09:52 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,32 +39,9 @@ int fill_stack(t_stack **stack, int ac, char **av)
 	return (1);
 }
 
-int	is_number(char *str)
-{
-	while (*str)
-	{
-		if (*str < '0' || *str > '9' || *str != '+' || *str != '-')
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
-int	check_input(char **av)
-{
-	int	i;
-
-	i = 0;
-	while (av[++i])
-	{
-		if(!is_number(av[i]))
-			return (0);
-	}
-	return (1);
-}
-
 int	main(int ac, char **av)
 {
+
 	t_stack		*stack_a;
     t_stack     *stack_b;
 	int			i;
@@ -72,7 +49,8 @@ int	main(int ac, char **av)
 
 	if (!check_input(av))
 		exit_error(NULL, NULL);
-
+	stack_a = NULL;
+	stack_b = NULL;
     if (!fill_stack(&stack_a, ac, av))
         exit_error(&stack_a, NULL);
 
@@ -80,5 +58,11 @@ int	main(int ac, char **av)
 	{
 		printf("%d ", stack_a->value);
 		stack_a = stack_a->next;
+	}
+	printf("\n");
+	while (stack_b)
+	{
+		printf("%d ", stack_b->value);
+		stack_b = stack_b->next;
 	}
 }

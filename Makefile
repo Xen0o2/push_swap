@@ -6,14 +6,20 @@
 #    By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/18 10:17:25 by alecoutr          #+#    #+#              #
-#    Updated: 2023/03/18 10:58:39 by alecoutr         ###   ########.fr        #
+#    Updated: 2023/03/28 11:31:18 by alecoutr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 
 SRCS	= push_swap.c \
-			stack.c
+			stack.c \
+			utils.c \
+			swap.c \
+			push.c \
+			check_input.c \
+			rotate.c \
+			reverse_rotate.c
 
 OBJS	= $(SRCS:.c=.o)
 
