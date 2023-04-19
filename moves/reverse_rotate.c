@@ -6,11 +6,11 @@
 /*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:18:09 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/03/28 14:10:02 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:12:50 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void    reverse_rotate(t_stack **stack)
 {

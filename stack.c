@@ -6,7 +6,7 @@
 /*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 02:31:40 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/03/28 11:10:42 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/17 16:27:26 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,17 @@ void	add_bottom_stack(t_stack **stack, t_stack *new)
 	}
 	last = get_bottom_stack(*stack);
 	last->next = new;
+}
+
+int	get_stack_size(t_stack *stack)
+{
+	int	size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
 }

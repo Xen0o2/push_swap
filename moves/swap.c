@@ -6,11 +6,11 @@
 /*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:41:51 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/03/28 11:16:41 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/17 16:31:07 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void    swap(t_stack *stack)
 {

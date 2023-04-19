@@ -6,7 +6,7 @@
 /*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 02:25:00 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/03/28 14:09:52 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:20:46 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int fill_stack(t_stack **stack, int ac, char **av)
 
 int	main(int ac, char **av)
 {
-
 	t_stack		*stack_a;
     t_stack     *stack_b;
 	int			i;
@@ -53,13 +52,14 @@ int	main(int ac, char **av)
 	stack_b = NULL;
     if (!fill_stack(&stack_a, ac, av))
         exit_error(&stack_a, NULL);
-
+	select_algo(&stack_a, &stack_b);
+	printf("a : ");
 	while (stack_a)
 	{
 		printf("%d ", stack_a->value);
 		stack_a = stack_a->next;
 	}
-	printf("\n");
+	printf("\nb : ");
 	while (stack_b)
 	{
 		printf("%d ", stack_b->value);

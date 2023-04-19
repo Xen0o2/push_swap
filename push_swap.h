@@ -6,31 +6,34 @@
 /*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 02:24:34 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/03/28 11:31:07 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:34:55 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-/* BESOIN */
 # include <stdio.h>
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
 
-/* PAS BESOIN */
-
 typedef struct s_stack
 {
     int             value;
     struct s_stack  *next;
-}   t_stack;
+}	t_stack;
 
 t_stack			*new_stack(int value);
 t_stack			*get_bottom_stack(t_stack *stack);
 t_stack			*get_pre_bottom_stack(t_stack *stack);
 void			add_bottom_stack(t_stack **stack, t_stack *new);
+int	get_stack_size(t_stack *stack);
+
+void			select_algo(t_stack **stack_a, t_stack **stack_b);
+void			two_sort(t_stack **stack_a);
+void			tree_sort(t_stack **stack_a);
+void			little_sort(t_stack **stack_a, t_stack **stack_b);
 
 long long int	ft_atoi(char *s);
 int				ft_strcmp(char *s1, char *s2);

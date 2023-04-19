@@ -6,11 +6,11 @@
 /*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:00:47 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/03/28 11:29:33 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/17 16:31:03 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void    rotate(t_stack **stack)
 {

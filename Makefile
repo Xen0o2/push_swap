@@ -6,7 +6,7 @@
 #    By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/18 10:17:25 by alecoutr          #+#    #+#              #
-#    Updated: 2023/03/28 11:31:18 by alecoutr         ###   ########.fr        #
+#    Updated: 2023/04/17 18:32:43 by alecoutr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,15 @@ NAME	= push_swap
 SRCS	= push_swap.c \
 			stack.c \
 			utils.c \
-			swap.c \
-			push.c \
+			moves/swap.c \
 			check_input.c \
-			rotate.c \
-			reverse_rotate.c
+			moves/push.c \
+			moves/reverse_rotate.c \
+			moves/rotate.c \
+			sorts/two_sort.c \
+			sorts/tree_sort.c \
+			sorts/little_sort.c \
+			select_algo.c
 
 OBJS	= $(SRCS:.c=.o)
 
