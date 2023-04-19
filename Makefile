@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+         #
+#    By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/18 10:17:25 by alecoutr          #+#    #+#              #
-#    Updated: 2023/04/17 18:32:43 by alecoutr         ###   ########.fr        #
+#    Updated: 2023/04/19 16:27:00 by alecoutr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS	= push_swap.c \
 			sorts/two_sort.c \
 			sorts/tree_sort.c \
 			sorts/little_sort.c \
+			sorts/big_sort.c \
 			select_algo.c
 
 OBJS	= $(SRCS:.c=.o)

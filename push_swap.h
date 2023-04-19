@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 02:24:34 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/04/17 18:34:55 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:26:41 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ t_stack			*new_stack(int value);
 t_stack			*get_bottom_stack(t_stack *stack);
 t_stack			*get_pre_bottom_stack(t_stack *stack);
 void			add_bottom_stack(t_stack **stack, t_stack *new);
-int	get_stack_size(t_stack *stack);
+int				get_stack_size(t_stack *stack);
 
 void			select_algo(t_stack **stack_a, t_stack **stack_b);
 void			two_sort(t_stack **stack_a);
 void			tree_sort(t_stack **stack_a);
 void			little_sort(t_stack **stack_a, t_stack **stack_b);
+void			big_sort(t_stack **stack_a, t_stack **stack_b);
 
 long long int	ft_atoi(char *s);
 int				ft_strcmp(char *s1, char *s2);
