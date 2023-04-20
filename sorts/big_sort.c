@@ -6,7 +6,7 @@
 /*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:36:13 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/04/19 17:34:34 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/20 18:00:25 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,25 @@ void    swap_values(t_stack *a, t_stack*b)
 void    bubble_sort(t_stack **stack)
 {
     int swapped;
-    t_stack *ptr1;
-    t_stack *lptr = NULL;
+    t_stack *tmp_stack;
 
-    if (stack == NULL)
-        return;
-
+    swapped = 1;
     while (swapped)
     {
         swapped = 0;
-        ptr1 = *stack;
-
-        while (ptr1->next != lptr) {
-            if (ptr1->value > ptr1->next->value) {
-                swap_values(ptr1, ptr1->next);
+        tmp_stack = *stack;
+        while (tmp_stack->next) {
+            if (tmp_stack->value > tmp_stack->next->value) {
+                swap_values(tmp_stack, tmp_stack->next);
                 swapped = 1;
             }
-            ptr1 = ptr1->next;
+            tmp_stack = tmp_stack->next;
         }
-        lptr = ptr1;
     }
 
 }
 
-void    duplicate(t_stack *stack, t_stack **duplicate)
+int duplicate(t_stack *stack, t_stack **duplicate)
 {
     int i;
     
@@ -62,20 +57,44 @@ void    duplicate(t_stack *stack, t_stack **duplicate)
 		i++;
         stack = stack->next;
 	}
+    bubble_sort(duplicate);
+    return (i);
+}
+
+int get_middle(t_stack *stack)
+{
+    t_stack *duplicate_stack;
+    int size;
+
+    size = duplicate(stack, &duplicate_stack) / 2;
+    while (--size)
+        duplicate_stack = duplicate_stack->next;
+    return (duplicate_stack->value);
 }
 
 void	big_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	int size;
-    t_stack *duplicate_stack;
+    int middle;
+    int size;
+    int i;
+    t_stack *tmp_stack;
 
-    duplicate(*stack_a, &duplicate_stack);
-    bubble_sort(&duplicate_stack);
-    printf("t : ");
-    while (duplicate_stack)
+    tmp_stack = *stack_a;
+    i = -1;
+    size = get_stack_size(*stack_a) + 1;
+    middle = get_middle(*stack_a);
+    printf("middle : %d\n", middle);
+    while (++i < size)
     {
-        printf("%d ", duplicate_stack->value);
-        duplicate_stack = duplicate_stack->next;
+        if (tmp_stack->value <= middle)
+            pb(stack_a, stack_b);
+        else
+            ra(stack_a);
+        tmp_stack = *stack_a;
     }
-    printf("\n");
+    size /= 2;
+    while (--size - 2)
+        pb(stack_a, stack_b);
+    tree_sort(stack_a);
+    
 }
