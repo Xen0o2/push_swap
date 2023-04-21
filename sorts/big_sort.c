@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:36:13 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/04/21 18:04:16 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/21 21:42:23 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,17 @@ void    get_b_costs(t_stack *stack_b)
     }
 }
 
+int is_sorted(t_stack *stack)
+{
+    while (stack && stack->next)
+    {
+        if (stack->value > stack->next->value)
+            return (0);
+        stack = stack->next;
+    }
+    return (1);
+}
+
 void    get_a_costs(t_stack *stack_a, t_stack *stack_b)
 {
     int i;
@@ -135,14 +146,13 @@ void    get_a_costs(t_stack *stack_a, t_stack *stack_b)
     int size;
     t_stack *tmp_stack;
 
-    i = 0;
     moves = 0;
     tmp_stack = stack_a;
     size = get_stack_size(stack_a);
     while (stack_b)
     {
+        i = 0;
         gap = INT_MAX;
-        printf("pour %d\n", tmp_stack->value);
         while (tmp_stack)
         {
             if (tmp_stack->value - stack_b->value < gap && tmp_stack->value > stack_b->value)
@@ -154,10 +164,8 @@ void    get_a_costs(t_stack *stack_a, t_stack *stack_b)
                     moves = i;
             }
             i++;
-            printf("celui du dessus : %d\n", stack_b->value);
             tmp_stack = tmp_stack->next;
         }
-        tmp_stack = stack_a;
         stack_b->a_cost = moves;
         stack_b->cost = ABS(stack_b->a_cost) + ABS(stack_b->b_cost);
         stack_b = stack_b->next;
@@ -216,7 +224,9 @@ void	big_sort(t_stack **stack_a, t_stack **stack_b)
         best_position = get_best_position(*stack_b);
         get_moves(*stack_b, &nb_ra, &nb_rb, best_position);
 
+        printf("je dois faire ra %d et rb %d\n", nb_ra, nb_rb);
         while (nb_ra){
+            printf("je fais\n");
             if (nb_ra > 0)
             {
                 ra(stack_a);
@@ -244,3 +254,4 @@ void	big_sort(t_stack **stack_a, t_stack **stack_b)
         x++;
     }
 }
+//5 7 10 8 6 3 4 2 9 1 
