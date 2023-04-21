@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 02:24:34 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/04/19 16:26:41 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:42:26 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# define ABS(X) ((X < 0) ? -(X) : (X))
 
 # include <stdio.h>
 # include <limits.h>
@@ -21,6 +23,9 @@
 typedef struct s_stack
 {
     int             value;
+    int				a_cost;
+	int				b_cost;
+	int				cost;
     struct s_stack  *next;
 }	t_stack;
 

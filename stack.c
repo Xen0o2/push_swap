@@ -6,7 +6,7 @@
 /*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 02:31:40 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/04/17 16:27:26 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:42:19 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ t_stack	*new_stack(int value)
 		return (new);
 	}
 	new->value = value;
+	new->a_cost = 0;
+	new->b_cost = 0;
+	new->cost = 0;
 	new->next = NULL;
 	return (new);
 }

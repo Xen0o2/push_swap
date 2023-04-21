@@ -6,7 +6,7 @@
 /*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 02:25:00 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/04/17 19:20:46 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:49:40 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
     t_stack     *stack_b;
 	int			i;
 	long int	number;
-
+	
 	if (!check_input(av))
 		exit_error(NULL, NULL);
 	stack_a = NULL;
@@ -53,16 +53,17 @@ int	main(int ac, char **av)
     if (!fill_stack(&stack_a, ac, av))
         exit_error(&stack_a, NULL);
 	select_algo(&stack_a, &stack_b);
-	printf("a : ");
+	printf("a :\n");
 	while (stack_a)
 	{
-		printf("%d ", stack_a->value);
+		printf("%d\n", stack_a->value);
 		stack_a = stack_a->next;
 	}
-	printf("\nb : ");
+	printf("\nb : \n");
 	while (stack_b)
 	{
-		printf("%d ", stack_b->value);
+		printf("%d (cb : %d ca : %d cout : %d)\n", stack_b->value, stack_b->b_cost, stack_b->a_cost, stack_b->cost);
 		stack_b = stack_b->next;
 	}
+	// system("leaks push_swap");
 }
