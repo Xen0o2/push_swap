@@ -12,18 +12,18 @@
 
 #include "push_swap.h"
 
-void    exit_error(t_stack **stack_a, t_stack **stack_b)
+void	exit_error(t_stack **stack_a, t_stack **stack_b)
 {
-    write(2, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
-int fill_stack(t_stack **stack, int ac, char **av)
+int	fill_stack(t_stack **stack, int ac, char **av)
 {
-    int         i;
-    long long int    number;
-    
-    *stack = NULL;
+	int				i;
+	long long int	number;
+
+	*stack = NULL;
 	i = 1;
 	while (av[i])
 	{
@@ -42,28 +42,18 @@ int fill_stack(t_stack **stack, int ac, char **av)
 int	main(int ac, char **av)
 {
 	t_stack		*stack_a;
-    t_stack     *stack_b;
+	t_stack		*stack_b;
 	int			i;
 	long int	number;
-	
+
 	if (!check_input(av))
 		exit_error(NULL, NULL);
 	stack_a = NULL;
 	stack_b = NULL;
-    if (!fill_stack(&stack_a, ac, av))
-        exit_error(&stack_a, NULL);
-	select_algo(&stack_a, &stack_b);
-	printf("a :\n");
-	while (stack_a)
-	{
-		printf("%d\n", stack_a->value);
-		stack_a = stack_a->next;
-	}
-	printf("\nb : \n");
-	while (stack_b)
-	{
-		printf("%d (cb : %d ca : %d cout : %d)\n", stack_b->value, stack_b->b_cost, stack_b->a_cost, stack_b->cost);
-		stack_b = stack_b->next;
-	}
-	// system("leaks push_swap");
+	if (ac == 1 || ac == 2)
+		exit(1);
+	if (!fill_stack(&stack_a, ac, av))
+		exit_error(&stack_a, NULL);
+	if (!is_sorted(stack_a))
+		select_algo(&stack_a, &stack_b);
 }

@@ -24,10 +24,10 @@
 
 #include "push_swap.h"
 
-long long int ft_atoi(char *s)
+long long int	ft_atoi(char *s)
 {
-	int	result;
-	int	sign;
+	long long int	result;
+	int				sign;
 
 	result = 0;
 	sign = 1;
@@ -78,4 +78,12 @@ void	ft_putstr(char *str)
 {
 	while (*str)
 		write(1, &*str++, 1);
+}
+
+int	abs(int n)
+{
+	if (n < 0)
+		return (-(n));
+	else
+		return (n);
 }

@@ -39,10 +39,25 @@ int	find_pos_little(t_stack **stack_a)
 void	little_first(t_stack **stack_a)
 {
 	int	position;
+	int	size;
 
-	position = find_pos_little(stack_a) + 1;
-	while (--position)
-		ra(stack_a);
+	position = find_pos_little(stack_a);
+	size = get_stack_size(*stack_a);
+	if (position >= size / 2)
+		position = -(size - position);
+	while (position)
+	{
+		if (position > 0)
+		{
+			ra(stack_a);
+			position--;
+		}
+		else
+		{
+			rra(stack_a);
+			position++;
+		}
+	}
 }
 
 void	little_sort(t_stack **stack_a, t_stack **stack_b)

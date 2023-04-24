@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alecoutr <alecoutr@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:37:46 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/03/27 14:38:17 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/24 00:23:22 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_number(char *str)
 	while (str[++i])
 		if ((str[i] < '0' || str[i] > '9')
 			&& (i != 0 || (str[i] != '+' && str[i] != '-')))
-				return (0);
+			return (0);
 	return (1);
 }
 
@@ -42,8 +42,19 @@ int	check_input(char **av)
 	i = 0;
 	while (av[++i])
 	{
-		if(is_double(av, i) || !is_number(av[i]))
+		if (is_double(av, i) || !is_number(av[i]))
 			return (0);
+	}
+	return (1);
+}
+
+int	is_sorted(t_stack *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
 	}
 	return (1);
 }

@@ -12,35 +12,35 @@
 
 #include "../push_swap.h"
 
-void    rotate(t_stack **stack)
+void	rotate(t_stack **stack)
 {
-    t_stack *second_stack;
-    t_stack *last_stack;
+	t_stack	*second_stack;
+	t_stack	*last_stack;
 
-    if (stack == NULL || *stack == NULL)
-        return ;
-    second_stack = (*stack)->next;
-    last_stack = get_bottom_stack(*stack);
-    last_stack->next = *stack;
-    (*stack)->next = NULL;
-    *stack = second_stack;
+	if (stack == NULL || *stack == NULL)
+		return ;
+	second_stack = (*stack)->next;
+	last_stack = get_bottom_stack(*stack);
+	last_stack->next = *stack;
+	(*stack)->next = NULL;
+	*stack = second_stack;
 }
 
-void    rr(t_stack **stack_a, t_stack **stack_b)
+void	rr(t_stack **stack_a, t_stack **stack_b)
 {
-    ft_putstr("rr\n");
-    ra(stack_a);
-    rb(stack_b);
+	ft_putstr("rr\n");
+	ra(stack_a);
+	rb(stack_b);
 }
 
-void    ra(t_stack **stack_a)
+void	ra(t_stack **stack_a)
 {
-    rotate(stack_a);
-    ft_putstr("ra\n");
+	rotate(stack_a);
+	ft_putstr("ra\n");
 }
 
-void    rb(t_stack **stack_b)
+void	rb(t_stack **stack_b)
 {
-    rotate(stack_b);
-    ft_putstr("rb\n");
+	rotate(stack_b);
+	ft_putstr("rb\n");
 }

@@ -34,14 +34,14 @@ t_stack	*get_bottom_stack(t_stack *stack)
 {
 	while (stack && stack->next)
 		stack = stack->next;
-	return(stack);	
+	return (stack);
 }
 
 t_stack	*get_pre_bottom_stack(t_stack *stack)
 {
 	while (stack && stack->next && stack->next->next)
 		stack = stack->next;
-	return(stack);	
+	return (stack);
 }
 
 void	add_bottom_stack(t_stack **stack, t_stack *new)

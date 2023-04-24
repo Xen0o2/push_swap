@@ -6,252 +6,99 @@
 /*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:36:13 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/04/21 21:42:23 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/24 00:24:01 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void    swap_values(t_stack *a, t_stack *b)
+void	get_moves(t_stack *stack_b, int *nb_ra, int *nb_rb, int best_position)
 {
-    int tmp;
+	int	i;
 
-    tmp = a->value;
-    a->value = b->value;
-    b->value = tmp;
+	i = -1;
+	while (++i < best_position)
+		stack_b = stack_b->next;
+	*nb_ra = stack_b->a_cost;
+	*nb_rb = stack_b->b_cost;
 }
 
-void    bubble_sort(t_stack **stack)
+void	do_ra(t_stack **stack_a, int nb_ra)
 {
-    int swapped;
-    t_stack *tmp_stack;
-
-    swapped = 1;
-    while (swapped)
-    {
-        swapped = 0;
-        tmp_stack = *stack;
-        while (tmp_stack->next) {
-            if (tmp_stack->value > tmp_stack->next->value) {
-                swap_values(tmp_stack, tmp_stack->next);
-                swapped = 1;
-            }
-            tmp_stack = tmp_stack->next;
-        }
-    }
-
-}
-
-int duplicate(t_stack *stack, t_stack **duplicate)
-{
-    int i;
-    
-    *duplicate = NULL;
-	i = 1;
-	while (stack)
+	while (nb_ra)
 	{
-		if (i == 1)
-			*duplicate = new_stack(stack->value);
+		if (nb_ra > 0)
+		{
+			ra(stack_a);
+			nb_ra--;
+		}
 		else
-			add_bottom_stack(duplicate, new_stack(stack->value));
-		i++;
-        stack = stack->next;
+		{
+			rra(stack_a);
+			nb_ra++;
+		}
 	}
-    bubble_sort(duplicate);
-    return (i);
 }
 
-int get_middle(t_stack *stack)
+void	do_rb(t_stack **stack_b, int nb_rb)
 {
-    t_stack *duplicate_stack;
-    t_stack *address;
-    int size;
-    int value;
-
-    size = duplicate(stack, &duplicate_stack) / 2;
-    while (--size)
-    {
-        address = duplicate_stack->next;
-        free(duplicate_stack);
-        duplicate_stack = address;
-    }
-    value = duplicate_stack->value;
-    while (duplicate_stack)
-    {
-        address = duplicate_stack->next;
-        free(duplicate_stack);
-        duplicate_stack = address;
-    }
-    return (value);
+	while (nb_rb)
+	{
+		if (nb_rb > 0)
+		{
+			rb(stack_b);
+			nb_rb--;
+		}
+		else
+		{
+			rrb(stack_b);
+			nb_rb++;
+		}
+	}
 }
 
-void    push_b(t_stack **stack_a, t_stack **stack_b)
+void	finish(t_stack **stack_a)
 {
-    int middle;
-    int size;
-    int i;
-    t_stack *tmp_stack;
+	int	min;
+	int	size;
 
-    tmp_stack = *stack_a;
-    i = -1;
-    size = get_stack_size(*stack_a) + 1;
-    middle = get_middle(*stack_a);
-    while (++i < size)
-    {
-        if (tmp_stack->value <= middle)
-            pb(stack_a, stack_b);
-        else
-            ra(stack_a);
-        tmp_stack = *stack_a;
-    }
-    while (get_stack_size(*stack_a) > 3)
-        pb(stack_a, stack_b);
-    tree_sort(stack_a);
-}
-
-void    get_b_costs(t_stack *stack_b)
-{
-    int size;
-    int i;
-
-    size = get_stack_size(stack_b);
-    i = 0;
-    while (stack_b)
-    {
-        if (i > size / 2)
-            stack_b->b_cost = i - size;
-        else
-            stack_b->b_cost = i;
-        i++;
-        stack_b = stack_b->next;
-    }
-}
-
-int is_sorted(t_stack *stack)
-{
-    while (stack && stack->next)
-    {
-        if (stack->value > stack->next->value)
-            return (0);
-        stack = stack->next;
-    }
-    return (1);
-}
-
-void    get_a_costs(t_stack *stack_a, t_stack *stack_b)
-{
-    int i;
-    int gap;
-    int moves;
-    int size;
-    t_stack *tmp_stack;
-
-    moves = 0;
-    tmp_stack = stack_a;
-    size = get_stack_size(stack_a);
-    while (stack_b)
-    {
-        i = 0;
-        gap = INT_MAX;
-        while (tmp_stack)
-        {
-            if (tmp_stack->value - stack_b->value < gap && tmp_stack->value > stack_b->value)
-            {
-                gap = tmp_stack->value - stack_b->value;
-                if (i > size / 2)
-                    moves = i - size;
-                else
-                    moves = i;
-            }
-            i++;
-            tmp_stack = tmp_stack->next;
-        }
-        stack_b->a_cost = moves;
-        stack_b->cost = ABS(stack_b->a_cost) + ABS(stack_b->b_cost);
-        stack_b = stack_b->next;
-    }
-}
-
-int get_best_position(t_stack *stack_b)
-{
-    int i;
-    int min;
-    int position;
-
-    i = 0;
-    min = stack_b->cost;
-    position = 0;
-    while (stack_b)
-    {
-        if (stack_b->cost < min)
-        {
-            min = stack_b->cost;
-            position = i;  
-        }
-        i++;
-        stack_b = stack_b->next;
-    }
-    return (position);
-}
-
-void    get_moves(t_stack *stack_b, int *nb_ra, int *nb_rb, int best_position)
-{
-    int i;
-
-    i = -1;
-    while (++i < best_position)
-        stack_b = stack_b->next;
-    *nb_ra = stack_b->a_cost;
-    *nb_rb = stack_b->b_cost;
+	min = get_tiny_position(stack_a);
+	size = get_stack_size(*stack_a);
+	if (min > size / 2)
+		min = - (size - min);
+	while (min)
+	{
+		if (min > 0)
+		{
+			ra(stack_a);
+			min--;
+		}
+		else
+		{
+			rra(stack_a);
+			min++;
+		}
+	}
 }
 
 void	big_sort(t_stack **stack_a, t_stack **stack_b)
 {
-    int i;
-    int best_position;
-    int nb_ra;
-    int nb_rb;
+	int	i;
+	int	best_position;
+	int	nb_ra;
+	int	nb_rb;
 
-    push_b(stack_a, stack_b);
-
-    int x = 0;
-
-    while (get_stack_size(*stack_b))
-    {
-        get_b_costs(*stack_b);
-        get_a_costs(*stack_a, *stack_b);
-        i = -1;
-        best_position = get_best_position(*stack_b);
-        get_moves(*stack_b, &nb_ra, &nb_rb, best_position);
-
-        printf("je dois faire ra %d et rb %d\n", nb_ra, nb_rb);
-        while (nb_ra){
-            printf("je fais\n");
-            if (nb_ra > 0)
-            {
-                ra(stack_a);
-                nb_ra--;
-            }
-            else
-            {
-                rra(stack_a);
-                nb_ra++;
-            }
-        }
-        while (nb_rb){
-            if (nb_rb > 0)
-            {
-                rb(stack_b);
-                nb_rb--;
-            }
-            else
-            {
-                rrb(stack_a);
-                nb_rb++;
-            }
-        }
-        pa(stack_a, stack_b);
-        x++;
-    }
+	push_b(stack_a, stack_b);
+	while (*stack_b)
+	{
+		get_b_costs(*stack_b);
+		get_a_costs(*stack_a, *stack_b);
+		i = -1;
+		best_position = get_best_position(*stack_b);
+		get_moves(*stack_b, &nb_ra, &nb_rb, best_position);
+		do_ra(stack_a, nb_ra);
+		do_rb(stack_b, nb_rb);
+		pa(stack_a, stack_b);
+	}
+	finish(stack_a);
 }
-//5 7 10 8 6 3 4 2 9 1 

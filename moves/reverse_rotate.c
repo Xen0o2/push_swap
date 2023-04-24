@@ -12,35 +12,35 @@
 
 #include "../push_swap.h"
 
-void    reverse_rotate(t_stack **stack)
+void	reverse_rotate(t_stack **stack)
 {
-    t_stack *before_last_stack;
-    t_stack *last_stack;
+	t_stack	*before_last_stack;
+	t_stack	*last_stack;
 
-    if (stack == NULL || *stack == NULL)
-        return ;
-    before_last_stack = get_pre_bottom_stack(*stack);
-    last_stack = get_bottom_stack(*stack);
-    before_last_stack->next = NULL;
-    last_stack->next = *stack;
-    *stack = last_stack;
+	if (stack == NULL || *stack == NULL)
+		return ;
+	before_last_stack = get_pre_bottom_stack(*stack);
+	last_stack = get_bottom_stack(*stack);
+	before_last_stack->next = NULL;
+	last_stack->next = *stack;
+	*stack = last_stack;
 }
 
-void    rrr(t_stack **stack_a, t_stack **stack_b)
+void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
-    ft_putstr("rrr\n");
-    rra(stack_a);
-    rrb(stack_b);
+	rra(stack_a);
+	rrb(stack_b);
+	ft_putstr("rrr\n");
 }
 
-void    rra(t_stack **stack_a)
+void	rra(t_stack **stack_a)
 {
-    reverse_rotate(stack_a);
-    ft_putstr("rra\n");
+	reverse_rotate(stack_a);
+	ft_putstr("rra\n");
 }
 
-void    rrb(t_stack **stack_b)
+void	rrb(t_stack **stack_b)
 {
-    reverse_rotate(stack_b);
-    ft_putstr("rrb\n");
+	reverse_rotate(stack_b);
+	ft_putstr("rrb\n");
 }
