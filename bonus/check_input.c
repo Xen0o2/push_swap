@@ -6,11 +6,11 @@
 /*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:37:46 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/04/25 00:51:05 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/25 22:50:46 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./push_swap.h"
+#include "./checker.h"
 
 int	is_number(char *str)
 {

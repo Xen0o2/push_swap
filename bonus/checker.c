@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 02:25:00 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/04/26 00:13:59 by alecoutr         ###   ########.fr       */
+/*   Created: 2023/04/25 00:37:45 by alecoutr          #+#    #+#             */
+/*   Updated: 2023/04/26 00:13:08 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./checker.h"
 
 void	exit_error(void)
 {
@@ -39,6 +39,48 @@ int	fill_stack(t_stack **stack, int ac, char **av)
 	return (1);
 }
 
+void	do_move(char *move, t_stack **stack_a, t_stack **stack_b)
+{
+	if (ft_strcmp(move, "pa\n") == 0)
+		pa(stack_a, stack_b);
+	else if (ft_strcmp(move, "pb\n") == 0)
+		pb(stack_a, stack_b);
+	else if (ft_strcmp(move, "rra\n") == 0)
+		rra(stack_a);
+	else if (ft_strcmp(move, "rrb\n") == 0)
+		rrb(stack_b);
+	else if (ft_strcmp(move, "rrr\n") == 0)
+		rrr(stack_a, stack_b);
+	else if (ft_strcmp(move, "ra\n") == 0)
+		ra(stack_a);
+	else if (ft_strcmp(move, "rb\n") == 0)
+		rb(stack_b);
+	else if (ft_strcmp(move, "rr\n") == 0)
+		rr(stack_a, stack_b);
+	else if (ft_strcmp(move, "sa\n") == 0)
+		sa(stack_a);
+	else if (ft_strcmp(move, "sb\n") == 0)
+		sb(stack_b);
+	else if (ft_strcmp(move, "ss\n") == 0)
+		ss(stack_a, stack_b);
+}
+
+void	checker(t_stack **stack_a, t_stack **stack_b)
+{
+	char	*tmp;
+
+	tmp = get_next_line(0);
+	while (tmp)
+	{
+		do_move(tmp, stack_a, stack_b);
+		tmp = get_next_line(0);
+	}
+	if (is_sorted(*stack_a) && get_stack_size(*stack_b) == 0)
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
+}
+
 int	main(int ac, char **av)
 {
 	t_stack		*stack_a;
@@ -53,6 +95,5 @@ int	main(int ac, char **av)
 		exit(1);
 	if (!fill_stack(&stack_a, ac, av))
 		exit_error();
-	if (!is_sorted(stack_a))
-		select_algo(&stack_a, &stack_b);
+	checker(&stack_a, &stack_b);
 }

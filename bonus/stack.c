@@ -6,11 +6,11 @@
 /*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 02:31:40 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/04/26 00:20:36 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/04/26 00:20:41 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./checker.h"
 
 t_stack	*new_stack(int value)
 {
@@ -23,9 +23,6 @@ t_stack	*new_stack(int value)
 		return (new);
 	}
 	new->value = value;
-	new->a_cost = 0;
-	new->b_cost = 0;
-	new->cost = 0;
 	new->next = NULL;
 	return (new);
 }
