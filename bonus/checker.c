@@ -6,7 +6,7 @@
 /*   By: alecoutr <alecoutr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 00:37:45 by alecoutr          #+#    #+#             */
-/*   Updated: 2023/04/26 00:13:08 by alecoutr         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:10:37 by alecoutr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,10 @@ void	checker(t_stack **stack_a, t_stack **stack_b)
 	while (tmp)
 	{
 		do_move(tmp, stack_a, stack_b);
+		free(tmp);
 		tmp = get_next_line(0);
 	}
+	free(tmp);
 	if (is_sorted(*stack_a) && get_stack_size(*stack_b) == 0)
 		ft_putstr("OK\n");
 	else
